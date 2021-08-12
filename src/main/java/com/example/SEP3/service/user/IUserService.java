@@ -2,9 +2,11 @@ package com.example.SEP3.service.user;
 
 import com.example.SEP3.models.User;
 
-import java.io.IOException;
+import java.util.List;
 
 public interface IUserService
 {
-  User login(User user);
+
+  List<User> getAllUsers();
+  Boolean deleteUser(String userid);
 }

@@ -5,21 +5,27 @@ import com.example.SEP3.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 @RestController
 public class UserController
 {
-
   @Autowired IUserService userService;
 
-  @PostMapping("/login")
-  public User login(@RequestBody User user)
+  @GetMapping("/users")
+  public List<User> getAllUsers()
   {
-    User user1 = userService.login(user);
-    if (user1 == null)
+    List<User> userList = userService.getAllUsers();
+    if (userList == null)
     {
-      System.out.println("No user provided");
+      System.out.println("There are no users");
     }
-    return user1;
+    return userList;
+  }
+  @DeleteMapping("/user/{userid}")
+  public boolean deleteUser(@PathVariable String userid)
+  {
+    Boolean response = userService.deleteUser(userid);
+    return response;
   }
 }

@@ -23,14 +23,14 @@ public class DatabaseClient implements IDatabaseClient
 
   @Override public void launch()
   {
-    try
-    {
-      new Thread(()-> connect(new NetworkRequest(NetworkType.CONNECT,"JavaServer"))).start();
-    }
-    catch (Exception e)
-    {
-      e.printStackTrace();
-    }
+//    try
+//    {
+//      new Thread(()-> connect(new NetworkRequest(NetworkType.CONNECT,"JavaServer"))).start();
+//    }
+//    catch (Exception e)
+//    {
+//      e.printStackTrace();
+//    }
   }
 
   @Override public String connect(NetworkRequest networkRequest)
@@ -38,7 +38,7 @@ public class DatabaseClient implements IDatabaseClient
     try
     {
       Gson gson = new Gson();
-      Socket socket = new Socket("localhost", 1237);
+      Socket socket = new Socket("localhost", 1235);
       InputStream inputStream = socket.getInputStream();
       OutputStream outputStream = socket.getOutputStream();
       String request = gson.toJson(networkRequest);

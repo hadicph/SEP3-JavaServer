@@ -2,7 +2,9 @@ package com.example.SEP3.network.util;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class NetworkRequest
+import java.io.Serializable;
+
+public class NetworkRequest implements Serializable
 {
   @JsonProperty private String data;
   @JsonProperty private NetworkType type;

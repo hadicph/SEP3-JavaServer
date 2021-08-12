@@ -1,30 +1,32 @@
 package com.example.SEP3.models;
 
-public class User
+import java.io.Serializable;
+
+public class User implements Serializable
 {
-  private String username;
+  private String userid;
   private String password;
   private String role;
 
-
-  public User(){
-
-  }
-  public User(String username, String password, String role)
+  public User()
   {
-    this.username = username;
+  }
+
+  public User(String userid, String password, String role)
+  {
+    this.userid = userid;
     this.password = password;
     this.role = role;
   }
 
-  public String getUsername()
+  public String getUserid()
   {
-    return username;
+    return userid;
   }
 
-  public void setUsername(String username)
+  public void setUserid(String userid)
   {
-    this.username = username;
+    this.userid = userid;
   }
 
   public String getPassword()
@@ -45,5 +47,11 @@ public class User
   public void setRole(String role)
   {
     this.role = role;
+  }
+
+  @Override public String toString()
+  {
+    return "User{" + "userid='" + userid + '\'' + ", password='" + password
+        + '\'' + ", role='" + role + '\'' + '}';
   }
 }
