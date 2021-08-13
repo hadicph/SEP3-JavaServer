@@ -47,7 +47,6 @@ public class DatabaseClient implements IDatabaseClient
       byte[] data = new byte[256];
       int count = inputStream.read(data);
       String received = new String(data,0,count);
-      System.out.println("Method connect in DatabaseClient " + received);
       return received;
     }
     catch (Exception e)
