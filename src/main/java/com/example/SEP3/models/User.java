@@ -4,9 +4,7 @@ import java.io.Serializable;
 
 public class User implements Serializable
 {
-  private String userid;
-  private String password;
-  private String role;
+  private String userid,password,role,firstname,lastname,phonenb;
 
   public User()
   {
@@ -17,6 +15,17 @@ public class User implements Serializable
     this.userid = userid;
     this.password = password;
     this.role = role;
+  }
+
+  public User(String userid, String password, String role, String firstname,
+      String lastname, String phonenb)
+  {
+    this.userid = userid;
+    this.password = password;
+    this.role = role;
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.phonenb = phonenb;
   }
 
   public String getUserid()
@@ -39,19 +48,52 @@ public class User implements Serializable
     this.password = password;
   }
 
-  public String getRole()
-  {
-    return role;
-  }
 
   public void setRole(String role)
   {
     this.role = role;
   }
 
+  public String getRole()
+  {
+    return role;
+  }
+
+  public String getFirstname()
+  {
+    return firstname;
+  }
+
+  public void setFirstname(String firstname)
+  {
+    this.firstname = firstname;
+  }
+
+  public String getLastname()
+  {
+    return lastname;
+  }
+
+  public void setLastname(String lastname)
+  {
+    this.lastname = lastname;
+  }
+
+  public String getPhonenb()
+  {
+    return phonenb;
+  }
+
+  public void setPhonenb(String phonenb)
+  {
+    this.phonenb = phonenb;
+  }
+
   @Override public String toString()
   {
     return "User{" + "userid='" + userid + '\'' + ", password='" + password
-        + '\'' + ", role='" + role + '\'' + '}';
+        + '\'' + ", role='" + role + '\'' + ", firstname='" + firstname + '\''
+        + ", lastname='" + lastname + '\'' + ", phonenb='" + phonenb + '\''
+        + '}';
   }
 }

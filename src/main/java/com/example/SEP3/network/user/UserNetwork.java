@@ -1,5 +1,6 @@
 package com.example.SEP3.network.user;
 
+import com.example.SEP3.models.Case;
 import com.example.SEP3.models.User;
 import com.example.SEP3.network.connection.DatabaseClient;
 import com.example.SEP3.network.connection.IDatabaseClient;
@@ -33,5 +34,34 @@ import java.util.List;
     NetworkRequest networkRequest = new NetworkRequest(NetworkType.DELETE_USER, serializedUser);
     String received = databaseClient.connect(networkRequest);
     return gson.fromJson(received, boolean.class);
+  }
+
+  @Override public List<Case> getCasesForSpecificUser(String userid)
+  {
+    Gson gson = new Gson();
+    String serializedUser = gson.toJson(userid);
+    NetworkRequest networkRequest = new NetworkRequest(NetworkType.CASE,serializedUser);
+    String received = databaseClient.connect(networkRequest);
+    return gson.fromJson(received, new TypeToken<List<Case>>()
+    {
+    }.getType());
+  }
+
+  @Override public Boolean addUser(User user)
+  {
+    Gson gson = new Gson();
+    String serializedUser = gson.toJson(user);
+    NetworkRequest networkRequest = new NetworkRequest(NetworkType.ADD_USER, serializedUser);
+    String received = databaseClient.connect(networkRequest);
+    return gson.fromJson(received, boolean.class);
+  }
+
+  @Override public User loadData(String userid)
+  {
+    Gson gson = new Gson();
+    String serializedUser = gson.toJson(userid);
+    NetworkRequest networkRequest = new NetworkRequest(NetworkType.LOAD_DATA,serializedUser);
+    String received = databaseClient.connect(networkRequest);
+    return gson.fromJson(received, User.class);
   }
 }
